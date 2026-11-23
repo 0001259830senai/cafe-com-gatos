@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miau &amp; Grão — Cat Café &amp; Adoção</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="gatos.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Cabeçalho -->
+      <header class="top-header">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">☕🐾</div>
+          <div>
+            <h1 class="brand-title">Miau &amp; Grão</h1>
+            <p class="brand-subtitle">Cat Café &amp; Adoção Responsável</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button
+            id="tableBadgeBtn"
+            class="table-pill"
+            title="Ir para o cardápio da mesa">
+            🪑 <span id="headerTable">Mesa 04</span>
+          </button>
+          <div class="paws-wallet" title="Seu saldo de Patas">
+            🐾 <strong id="headerPaws">120</strong>
+          </div>
+        </div>
+      </header>
+
+      <!-- Conteúdo Principal -->
+      <main class="main-content">
+        <!-- ABA 1: VITRINE DE GATOS -->
+        <section id="tab-cats" class="tab-panel active">
+          <div class="hero-banner">
+            <div>
+              <span class="eyebrow">Cafeteria com Propósito</span>
+              <h2>Cada café ajuda um gatinho a ganhar um lar</h2>
+              <p>
+                Conheça nossos moradores, doe <strong>Patas</strong> para metas
+                de cuidados ou peça uma adoção.
+              </p>
+            </div>
+            <div class="stat-chip">
+              <strong id="availCount">5</strong>
+              <span>Disponíveis</span>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <button class="filter-chip active" data-filter="all">Todos</button>
+            <button class="filter-chip" data-filter="disponivel">
+              Disponíveis
+            </button>
+            <button class="filter-chip" data-filter="favoritos">
+              Favoritos ❤️
+            </button>
+          </div>
+
+          <div id="catsGrid" class="cards-grid"></div>
+        </section>
+
+        <!-- ABA 2: CARDÁPIO DA MESA -->
+        <section id="tab-menu" class="tab-panel">
+          <div class="section-header-row">
+            <div>
+              <h2>Cardápio da Mesa</h2>
+              <p class="muted">
+                Peça sem sair da área dos gatos e acumule Patas.
+              </p>
+            </div>
+            <div class="table-selector-box">
+              <label for="tableSelect">Local:</label>
+              <select id="tableSelect" class="select-input">
+                <option value="Mesa 01">Mesa 01</option>
+                <option value="Mesa 02">Mesa 02</option>
+                <option value="Mesa 03">Mesa 03</option>
+                <option value="Mesa 04" selected>Mesa 04</option>
+                <option value="Mesa 05">Mesa 05</option>
+                <option value="Balcão">Balcão</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="menuGrid" class="menu-list"></div>
+
+          <!-- Carrinho -->
+          <div class="cart-box">
+            <div class="cart-header">
+              <h3>🛒 Seu Pedido (<span id="cartCount">0</span>)</h3>
+              <span class="earn-preview"
+                >+<strong id="cartPaws">0</strong> 🐾</span
+              >
+            </div>
+            <div id="cartItems" class="muted">
+              Nenhum item adicionado ainda.
+            </div>
+            <div id="cartFooter" class="cart-footer hidden">
+              <div class="cart-total-row">
+                <span>Total:</span>
+                <strong id="cartTotal">R$ 0,00</strong>
+              </div>
+              <button id="submitOrderBtn" class="btn btn-primary btn-full">
+                Enviar Pedido &amp; Ganhar Patas
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA 3: CLUBE FIDELIDADE -->
+        <section id="tab-club" class="tab-panel">
+          <div class="loyalty-card">
+            <div>
+              <span class="eyebrow light">Clube Miau &amp; Grão</span>
+              <h2>Suas Patas Viram Café</h2>
+              <p>
+                Troque seus pontos acumulados por bebidas, doces ou petiscos
+                para os gatos.
+              </p>
+            </div>
+            <div class="loyalty-big-paws">
+              <span id="clubPaws">120</span>
+              <small>Patas disponíveis</small>
+            </div>
+          </div>
+
+          <div class="sub-block">
+            <h3>Recompensas Disponíveis</h3>
+            <div id="rewardsGrid" class="rewards-grid"></div>
+          </div>
+
+          <div class="sub-block">
+            <h3>Meus Cupons</h3>
+            <div id="couponsList" class="coupons-list"></div>
+          </div>
+        </section>
+
+        <!-- ABA 4: ÁLBUM DE VISITAS -->
+        <section id="tab-visits" class="tab-panel">
+          <div class="checkin-card">
+            <span class="eyebrow">Check-in na Loja</span>
+            <h2>Visite a Cafeteria &amp; Ganhe +15 🐾</h2>
+            <p>
+              Leia o QR Code da sua mesa ao chegar para registrar sua visita de
+              hoje.
+            </p>
+            <div class="checkin-actions">
+              <button id="qrCheckinBtn" class="btn btn-primary">
+                📷 Fazer Check-in (+15 🐾)
+              </button>
+              <span id="checkinStatus" class="checkin-badge"
+                >Pendente hoje</span
+              >
+            </div>
+          </div>
+
+          <div class="sub-block">
+            <h3>Gatinhos que Conheci (<span id="stickersCount">2/6</span>)</h3>
+            <p class="muted" style="margin-bottom: 12px">
+              Toque para marcar os gatinhos com quem você brincou hoje.
+            </p>
+            <div id="stickersGrid" class="stickers-grid"></div>
+          </div>
+
+          <div class="sub-block">
+            <h3>Mural de Finais Felizes 🎉</h3>
+            <div id="happyGrid" class="happy-grid"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="demo-footer">
+        <span>Miau &amp; Grão • Cat Café</span>
+        <button id="resetBtn" class="link-btn">Resetar dados</button>
+      </footer>
+
+      <!-- Navegação Inferior -->
+      <nav class="bottom-nav" aria-label="Menu principal">
+        <button class="nav-item active" data-target="tab-cats">
+          <span class="nav-icon">🐱</span>
+          <span class="nav-label">Gatos</span>
+        </button>
+        <button class="nav-item" data-target="tab-menu">
+          <span class="nav-icon">☕</span>
+          <span class="nav-label">Cardápio</span>
+        </button>
+        <button class="nav-item" data-target="tab-club">
+          <span class="nav-icon">🐾</span>
+          <span class="nav-label">Clube</span>
+        </button>
+        <button class="nav-item" data-target="tab-visits">
+          <span class="nav-icon">📖</span>
+          <span class="nav-label">Visitas</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Modal de Perfil & Adoção -->
+    <div
+      id="catModal"
+      class="modal-backdrop hidden"
+      role="dialog"
+      aria-modal="true">
+      <div class="modal-card">
+        <button id="closeModalBtn" class="modal-close" aria-label="Fechar">
+          ✕
+        </button>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <!-- Notificação Flutuante -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="gatos.js"></script>
+  </body>
+</html>
